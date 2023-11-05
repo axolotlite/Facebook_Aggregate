@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+
+            {% for card in cards %}
+            {#  Single Card Template:#}
+            <div class="card" style="width: 18rem; margin: 10px">
+                <!-- <img src="{{ card.image }}" class="card-img-top" > -->
+                <div class="card-body">
+                <div style="display: flex; flex-direction: row">
+                    <h5 class="card-title">{{ card.item }}</h5>
+                    {#  Colored cirlce:#}
+                    <div style="
+                    /* background: {{ card.color }}; */
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 10px;
+                    border-radius: 50%;
+                    "></div>
+                </div>
+                <p class="card-text">{{ card.text }}</p>
+                <h5 class="card-header">Price:{{ card.price }} </h5>
+                <ul class="list-group list-group-flush">
+                    {% for number in card.phones %}
+                    <li class="list-group-item">{{ number }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ card.post_url }}" class="btn btn-primary" target="_blank">Post URL</a>
+                <a href="/command/{{ card.post_id }}/delete" class="btn btn-primary">Delete</a>
+                <p class="card-text"><small class="text-muted">{{card.time}}</small></p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </body>
+</html>
